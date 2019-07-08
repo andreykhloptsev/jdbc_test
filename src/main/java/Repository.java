@@ -49,7 +49,7 @@ public class Repository implements IRepositiry {
             st.setInt(2,student.getAge());
             st.setFloat(3,student.getSalary());
             st.setInt(4,student.getId());
-            st.execute();
+            st.executeUpdate();
         } catch (SQLException e){
             e.printStackTrace();
         }finally {
@@ -68,14 +68,17 @@ public class Repository implements IRepositiry {
     }
 
     public Student get(int id) {
-        Student student = new Student();
+        Student student = new Student(id);
         conn= MyConnection.getConnection();
         String sql = "SELECT * FROM STUDENTS WHERE id=?";
         try {
             st=conn.prepareStatement(sql);
             st.setInt(1,id);
             ResultSet rs = st.executeQuery();
-
+           // Student student = new Student();
+            student.setName(rs.getString("NAME"));
+            student.setAge(rs.getInt("AGE"));
+            student.setSalary(rs.getFloat("SALARY"));
         } catch (SQLException e){
             e.printStackTrace();
         }finally {

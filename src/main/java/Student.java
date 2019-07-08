@@ -7,6 +7,10 @@ public class Student {
     private int age;
     private float salary;
 
+    public Student(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

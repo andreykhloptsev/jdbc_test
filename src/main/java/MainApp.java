@@ -21,9 +21,11 @@ public class MainApp {
         Student student4 = new Student("Anton", 176,500.0f);
         rep.insert(student);
         rep.insert(student2);
-        student2.setSalary(0.5f);
+        Student s= rep.get(2);
+        s.setSalary(0.5f);
+        System.out.println(s);
         rep.insert(student3);
-        rep.update(student2);
+        rep.update(s);
         rep.insert(student4);
         System.out.println(rep.get());
 }
